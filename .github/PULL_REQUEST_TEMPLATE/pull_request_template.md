@@ -7,12 +7,12 @@ Provide a concise summary of the changes, the problem being addressed and the mo
 **Related issue:** Fixes # (issue number)
 
 **Key changes:**
-- 
-- 
-- 
+-
+-
+-
 
 **Dependencies or additional requirements:**
-- 
+-
 
 ## 2. Type of Change
 
@@ -35,10 +35,10 @@ Describe the tests performed and their results. Include instructions for reprodu
 - [ ] End-to-end tests (where applicable)
 - [ ] Manual testing
 - [ ] Data validation / quality checks (where applicable)
-- [ ] Other: 
+- [ ] Other:
 
 **Test results:**
-- 
+-
 
 **Test configuration:**
 - Python version:
