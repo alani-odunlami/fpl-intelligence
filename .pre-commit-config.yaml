@@ -1,1 +1,77 @@
 
+# .pre-commit-config.yaml
+
+# Run all hooks even if one fails
+fail_fast: false
+
+repos:
+
+  # -----------------------------------------------
+  # 1. General file and repository checks
+  # -----------------------------------------------
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+
+      # Remove trailing whitespace
+      - id: trailing-whitespace
+
+      # Ensure files end with a newline
+      - id: end-of-file-fixer
+
+      # Validate YAML files
+      - id: check-yaml
+
+      # Validate TOML files
+      - id: check-toml
+
+      # Detect unresolved merge conflicts
+      - id: check-merge-conflict
+
+      # Detect accidental debug statements
+      - id: debug-statements
+
+      # Detect private keys
+      - id: detect-private-key
+
+      # Prevent large files from being committed
+      - id: check-added-large-files
+        args: [--maxkb=1024]
+
+      # Detect filename case conflicts
+      - id: check-case-conflict
+
+
+  # -----------------------------------------------
+  # 2. Python linting and formatting
+  # -----------------------------------------------
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.17.6
+    hooks:
+
+      # Lint Python code and automatically fix issues
+      - id: ruff-check
+        args: [--fix]
+
+      # Format Python code
+      - id: ruff-format
+
+
+  # -----------------------------------------------
+  # 3. Secret detection
+  # -----------------------------------------------
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.5.0
+    hooks:
+
+      # Detect potential secrets and credentials
+      - id: detect-secrets
+        args:
+          - --baseline
+          - .secrets.baseline
+        exclude: >
+          (?x)^(
+            .*\.lock|
+            .*\.ipynb
+          )$
+
